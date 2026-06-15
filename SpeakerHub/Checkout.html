@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - SpeakerHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Speaker<span>Hub</span></div>
+        <nav>
+            <button onclick="window.location.href='index.html'">Home</button>
+            <button onclick="window.location.href='login.html'">Login</button>
+            <button onclick="window.location.href='register.html'">Register</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="checkout-summary">
+            <h1>Checkout</h1>
+            <p>Review your cart and complete your order.</p>
+        </section>
+
+        <div class="checkout-wrap">
+          <div class="checkout-form">
+            <h3>Shipping Details</h3>
+            <input id="checkout-name" placeholder="Full name">
+            <input id="checkout-address" placeholder="Address">
+            <input id="checkout-phone" placeholder="Phone number">
+            <h3>Payment</h3>
+            <select id="payment">
+                <option>GCash</option>
+                <option>Maya</option>
+                <option>Cash on Delivery</option>
+                <option>Bank Transfer</option>
+            </select>
+            <br><br>
+            <button class="primary" type="button" onclick="finalizeOrder()">Place Order</button>
+            <div id="checkout-success" class="checkout-success" style="display:none">Thank you — your order is confirmed.</div>
+
+            <!-- Order Modal -->
+            <div id="order-modal" class="order-modal" role="dialog" aria-hidden="true">
+                <div class="order-card">
+                    <div class="order-header">
+                        <div class="checkmark-wrap">
+                            <svg class="checkmark" viewBox="0 0 52 52">
+                                <circle cx="26" cy="26" r="25" fill="none" />
+                                <path d="M14 27 l7 7 l17 -17" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <h2>Order Confirmed</h2>
+                        <p class="muted">Thanks for your purchase — we've received your order.</p>
+                    </div>
+                    <div class="order-body">
+                        <div class="order-info">
+                            <p><strong>Order #</strong> <span id="order-id">—</span></p>
+                            <p><strong>Name</strong> <span id="order-name">—</span></p>
+                            <p><strong>Payment</strong> <span id="order-payment">—</span></p>
+                            <p><strong>Shipping</strong> <span id="order-address">—</span></p>
+                        </div>
+                        <div class="order-items">
+                            <h4>Items</h4>
+                            <div id="order-items-list"></div>
+                            <div class="order-total">Total: <span id="order-total">₱0.00</span></div>
+                        </div>
+                    </div>
+                    <div class="order-actions">
+                        <button class="secondary" type="button" onclick="closeOrderModal()">Continue Shopping</button>
+                        <button class="primary" type="button" onclick="downloadReceipt()">Download Receipt</button>
+                    </div>
+                </div>
+                <div class="confetti-layer" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <aside class="checkout-cart">
+            <h3>Your Items</h3>
+            <div id="checkout-cart-items"></div>
+            <div style="margin-top:12px;font-weight:700">Total: <span id="checkout-total">₱0.00</span></div>
+          </aside>
+        </div>
+
+        <section class="newsletter">
+            <h2>Join the SpeakerHub Mailing List</h2>
+            <input type="email" id="email" placeholder="Enter your email">
+            <button onclick="subscribe()">Subscribe</button>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <h3>SpeakerHub</h3>
+            <p>Premium speaker marketplace.</p>
+        </div>
+        <div>
+            <h3>Customer Service</h3>
+            <p>Help Center</p>
+            <p>Shipping</p>
+            <p>Returns</p>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <p>support@speakerhub.com</p>
+            <p>+1 800 123 4567</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
