@@ -13,5 +13,8 @@ SpeakerHub is a website project that showcases different speakers and audio prod
 - CSS
 - JavaScript
 
+## Other
+- hardwork sarap mag edit sirr haha hpoe maka pass:>>
+
 ## Created By
 Adrian Allama
