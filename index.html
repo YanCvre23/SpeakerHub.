@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SpeakerHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="matrix-rain">
+</div>
+
+<header>
+    <div class="logo">Speaker<span>Hub</span></div>
+
+    <div id="auth-display" class="auth-display">Not logged in</div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search speakers, brands..." onkeydown="if(event.key==='Enter'){ searchProduct(); }">
+        <button class="secondary" type="button" onclick="searchProduct()">Search</button>
+    </div>
+
+    <div class="nav-buttons">
+        <button class="secondary" type="button" onclick="toggleDarkMode()" title="Toggle dark/light mode">🌙 Mode</button>
+        <button class="secondary" type="button" onclick="window.location.href='login.html'">Login</button>
+        <button class="primary register" type="button" onclick="window.location.href='register.html'">Register</button>
+        <button class="secondary" id="cart-btn" type="button" onclick="toggleCart()">Cart <span id="cart-count" style="background:#ff2b9b;padding:2px 8px;border-radius:999px;margin-left:8px;font-weight:700">0</span></button>
+    </div>
+
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>Experience Premium Sound Like Never Before</h1>
+        <p>
+            Discover Bluetooth speakers, home theater systems,
+            studio monitors, portable speakers, and more.
+        </p>
+
+<button class="primary" type="button" onclick="document.querySelector('.products').scrollIntoView()">
+    Shop Best Sellers
+    </button>
+
+    <button class="secondary" type="button" onclick="document.querySelector('.categories').scrollIntoView()">
+    Browse Categories
+    </button>
+    
+    </div>
+
+    <div class="hero-image-wrap">
+        <div class="hero-image">
+            <img src="images/main image.jpg" alt="Hero Image">
+        </div>
+    </div>
+</section>
+
+<section class="categories">
+    <h2>Categories</h2>
+
+    <div class="category-grid">
+
+        <div class="card">
+            <img src="images/JBL.jpg" alt="Portable Speaker">
+            <h3>Bluetooth Speakers</h3>
+            <p>Portable wireless sound systems.</p>
+        </div>
+
+        <div class="card">
+            <img src="images/home-theater.jpg" alt="Home Theater">
+            <h3>Home Theater</h3>
+            <p>Immersive cinematic audio.</p>
+        </div>
+
+        <div class="card">
+            <img src="images/Studio.jpg" alt="Studio Monitors">
+            <h3>Studio Monitors</h3>
+            <p>Professional sound monitoring.</p>
+        </div>
+
+        <div class="card">
+            <img src="images/Party.jpg" alt="Party Speakers"> 
+            <h3>Party Speakers</h3>
+           <p>Powerful bass and loud output.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="speaker-types">
+    <h2>Our Speaker Types</h2>
+    <div class="speaker-types-grid">
+        <div class="speaker-type">
+            <img src="images/stylish speaker.jpg" alt="Wireless Speaker">
+            <h3>Wireless & Bluetooth</h3>
+            <p>Connect effortlessly to your devices</p>
+        </div>
+        <div class="speaker-type">
+            <img src="images/KAWOO Speaker Portable.jpg" alt="Portable Speaker">
+            <h3>Portable Speakers</h3>
+            <p>Take great sound anywhere</p>
+        </div>
+        <div class="speaker-type">
+            <img src="images/studio speaker.jpg" alt="Studio Speaker">
+            <h3>Studio Monitors</h3>
+            <p>Professional-grade accuracy</p>
+        </div>
+        <div class="speaker-type">
+            <img src="images/download.jpg" alt="Party Speaker">
+            <h3>Party Speakers</h3>
+            <p>High-power bass systems</p>
+        </div>
+        <div class="speaker-type">
+            <img src="images/home theater.jpg" alt="Home Theater">
+            <h3>Home Theater</h3>
+            <p>Immersive surround sound</p>
+        </div>
+    </div>
+</section>
+
+<section class="products">
+
+    <h2>Browse Our Speaker Collection</h2>
+
+    <div class="filter-sort-bar">
+        <div class="filter-group">
+            <label>Category:</label>
+            <select id="filter-category" onchange="filterAndSortProducts()">
+                <option value="all">All</option>
+                <option value="bluetooth">Bluetooth Speakers</option>
+                <option value="home">Home Theater</option>
+                <option value="studio">Studio Monitors</option>
+                <option value="party">Party Speakers</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label>Price:</label>
+            <select id="filter-price" onchange="filterAndSortProducts()">
+                <option value="all">All Prices</option>
+                <option value="under5k">Under ₱5,000</option>
+                <option value="5k-10k">₱5,000 - ₱10,000</option>
+                <option value="over10k">Over ₱10,000</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label>Sort:</label>
+            <select id="sort-by" onchange="filterAndSortProducts()">
+                <option value="name">Name (A-Z)</option>
+                <option value="price-low">Price (Low to High)</option>
+                <option value="price-high">Price (High to Low)</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="product-grid">
+
+        <div class="product-card">
+            <img src="images/JBL CHARGE 6.jpg" alt="The JBL ">
+            <h3>JBL CHARGE 6 Portable Bluetooth Speaker – Black</h3>
+            <p>It's time to live loud! Waterproof and powerful.</p>
+            <h4>₱10,999</h4>
+            <button class="primary" type="button" onclick="buyNow('JBL CHARGE 6', 10999)">Buy Now</button>
+            <button class="secondary" type="button" onclick="addToCart('JBL CHARGE 6', 10999)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/JBL.jpg" alt="JBL">
+            <h3>JBL Flip 6</h3>
+            <p>Compact, power-packed portable speaker.</p>
+            <h4>₱5,499</h4>
+            <button class="primary" type="button" onclick="buyNow('JBL Flip 6', 5499)">Buy Now</button>
+            <button class="secondary" type="button" onclick="addToCart('JBL Flip 6', 5499)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/Portable.jpg" alt="Portable Speaker">
+            <h3>Portable Mini Speaker</h3>
+            <p>Lightweight speaker for on-the-go listening.</p>
+            <h4>₱1,299</h4>
+            <button class="primary" type="button" onclick="buyNow('Portable Mini Speaker', 1299)">Buy Now</button>
+            <button class="secondary" type="button" onclick="addToCart('Portable Mini Speaker', 1299)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/KTV Portable speaker.jpg" alt="KTV Portable Speaker">
+            <h3>KTV Portable Speaker</h3>
+            <p>Portable Bluetooth speaker.</p>
+            <h4>₱4,999</h4>
+            <button class="primary" type="button" onclick="buyNow('KTV Portable Speaker', 4999)">Buy Now</button>
+            <button class="secondary" type="button" onclick="addToCart('KTV Portable Speaker', 4999)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/Pink Bose Bluetooth Speaker.jpg" alt="Bose Speaker">
+            <h3>Bose Smart Speaker</h3>
+            <p>BOSE HOME SPEAKER 500 BLACK</p>
+            <h4>₱3,229.99</h4>
+            <button class="primary" type="button" onclick="buyNow('Bose Smart Speaker', 3229.99)">Buy Now</button>
+            <button class="secondary" type="button" onclick="addToCart('Bose Smart Speaker', 3229.99)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/krk10s.jpg" alt="KRK Speaker">
+            <h3>KRK Rokit 5</h3>
+            <p>Professional studio monitor speaker.</p>
+            <h4>₱2,999</h4>
+            <button class="primary" type="button" onclick="buyNow('KRK Rokit 5', 2999)">Buy Now</button>
+            <button class="secondary" type="button" onclick="addToCart('KRK Rokit 5', 2999)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/wireless.jpg" alt="Wireless Speaker">
+            <h3>SpeakerHub Wireless Pro</h3>
+            <p>Premium wireless Bluetooth speaker with 360° sound.</p>
+            <h4>₱8,499</h4>
+            <button class="primary" type="button" onclick="buyNow('SpeakerHub Wireless Pro', 8499)">Buy Now</button>
+            <button class="secondary" type="button" onclick="addToCart('SpeakerHub Wireless Pro', 8499)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/Studio pro.jpg" alt="Studio Speaker">
+            <h3>StudioPro Monitors X2</h3>
+            <p>Professional-grade studio monitors for audio production.</p>
+            <h4>₱12,999</h4>
+            <button class="primary" type="button" onclick="buyNow('StudioPro Monitors X2', 12999)">Buy Now</button>
+            <button class="secondary" type="button" onclick="addToCart('StudioPro Monitors X2', 12999)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/Ultra Bass.jpg" alt="Party Speaker">
+            <h3>PartyBass Ultra 3000</h3>
+            <p>Heavy bass, high-power party speaker system.</p>
+            <h4>₱7,899</h4>
+            <button class="primary" type="button" onclick="buyNow('PartyBass Ultra 3000', 7899)">Buy Now</button>
+            <button class="secondary" type="button" onclick="addToCart('PartyBass Ultra 3000', 7899)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/pink home theatre design.jpg" alt="Home Theater">
+            <h3>HomeTheater Cinema 5.1</h3>
+            <p>Complete home theater surround sound system.</p>
+            <h4>₱15,499</h4>
+            <button class="primary" type="button" onclick="buyNow('HomeTheater Cinema 5.1', 15499)">Buy Now</button>
+            <button class="secondary" type="button" onclick="addToCart('HomeTheater Cinema 5.1', 15499)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/Travel sound speaker.jpg" alt="Portable Speaker">
+            <h3>TravelSound Compact</h3>
+            <p>Ultra-compact speaker perfect for travel and outdoor use.</p>
+            <h4>₱2,199</h4>
+            <button class="primary" type="button" onclick="buyNow('TravelSound Compact', 2199)">Buy Now</button>
+            <button class="secondary" type="button" onclick="addToCart('TravelSound Compact', 2199)">Add to Cart</button>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="newsletter">
+    <h2>Join the SpeakerHub Mailing List</h2>
+
+    <input type="email" id="email" placeholder="Enter your email">
+    <button class="secondary" type="button" onclick="subscribe()">Subscribe</button>
+</section>
+
+<section class="testimonials">
+    <h2>What Musicians Say About SpeakerHub</h2>
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"SpeakerHub's audio quality transformed my studio setup. Highly recommend!"</p>
+            <h4>- Marcus J., Sound Engineer</h4>
+        </div>
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"Best portable speaker I've ever owned. Perfect for gigs and rehearsals."</p>
+            <h4>- Alex Rivera, Musician</h4>
+        </div>
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"The customer service and product quality are unmatched. Worth every peso!"</p>
+            <h4>- Sofia Luna, Podcast Creator</h4>
+        </div>
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"Professional-grade sound at incredible prices. I'm a customer for life."</p>
+            <h4>- James Chen, Audio Producer</h4>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div>
+        <h3>SpeakerHub</h3>
+        <p>Premium speaker marketplace.</p>
+    </div>
+
+    <div>
+        <h3>Customer Service</h3>
+        <p>Help Center</p>
+        <p>Shipping</p>
+        <p>Returns</p>
+    </div>
+
+    <div>
+        <h3>Contact</h3>
+        <p>support@speakerhub.com</p>
+        <p>+1 800 123 4567</p>
+    </div>
+</footer>
+
+<canvas id="matrix"></canvas>
+
+<!-- Cart panel -->
+<div id="cart-panel" aria-hidden="true">
+    <h3>Your Cart</h3>
+    <div id="cart-panel-items"></div>
+    <div class="cart-footer">
+        <div id="cart-panel-total">₱0.00</div>
+        <div>
+            <button class="secondary" type="button" onclick="toggleCart()">Close</button>
+            <button class="primary" type="button" onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
